@@ -7,7 +7,8 @@
     <title>Home Kilev</title>
 </head>
 <body>
-    <div class="container">
+    <div class="wrapper">
+        <div class="container">
         <header class="header">
             <div class="header__logo">
                 <img src="assets/img/logo.svg" alt="Kilev Logo">
@@ -36,12 +37,13 @@
             </div>
         </header>
     </div>    
+    
         <main class="main">
+
             <div class="container">
                 <section class="hero">
-                    <div class="hero__background">
-                        <img src="assets/img/hero__watch.png" alt="hero__background">
-                    </div>
+                    <div class="hero__bg"></div>
+                    <img src="assets/img/hero__watch.png" alt="watch" class="hero__watch">
                     <div class="hero__content">
                         <h1 class="hero__title">
                             Bold brands begin here.
@@ -54,13 +56,18 @@
                             <a href="#" class="hero-button">
                                     Explore our projects
                             </a>
+                            <a href="#" class="hero-button--mobile">
+                                <span>Explore our projects</span>
+                                <img src="assets/img/arrow.svg" alt="hero__arrow">
+                            </a>
                             <div class="hero__talk">
-                                <p>Let’s talk</p>
+                                <span>Let’s talk</span>
                                 <a href="#"><img src="assets/img/arrow.svg" alt="hero__arrow"></a>
                             </div>
                     </div>
                     </div>
                 </section>
+               
                 <section class="services">
                         <div class="services__intro">
                             <div class="intro__label">
@@ -179,9 +186,25 @@
                         </div>
                         
                 </section>
+            </div>
                 <div class="portrait__image-wrapper">
-                            <img class="portrait__image" src="assets/img/portrait.png" alt="">
+                           <picture>
+                                <source
+                                    media="(max-width: 1000px)"
+                                    srcset="assets/img/portrait__mobile.png">
+                                <source
+                                    media="(max-width: 1350px)"
+                                    srcset="assets/img/portrait__tablet.png">
+                                
+
+                                    <img
+                                        class="portrait__image"
+                                        src="assets/img/portrait.png"
+                                        alt="">
+                            </picture>
                 </div>
+               
+            <div class="container">    
                 <section class="expertise">
                     <div class="expertise__intro">
                             <div class="intro__label">
@@ -206,31 +229,38 @@
                             <div class="expertise__list">
                                 <div class="expertise__list__item">
                                     <span class="expertise__list__item-number">01</span>
+                                    <img src="assets/img/icons/registration__icon.svg" alt="icon" class="expertise__list__item-icon">
                                     <span class="expertise__list__item-text">Deep research of your business and audience</span>
                                 </div>
                                 <div class="expertise__list__item">
                                     <span class="expertise__list__item-number">02</span>
+                                    <img src="assets/img/icons/posititioning__icon.svg" alt="icon" class="expertise__list__item-icon">
                                     <span class="expertise__list__item-text">Clear and differentiated positioning</span>
                                 </div>
                                 <div class="expertise__list__item">
                                     <span class="expertise__list__item-number">03</span>
+                                    <img src="assets/img/icons/touchpoints__icon.svg" alt="icon" class="expertise__list__item-icon">
                                     <span class="expertise__list__item-text">Consistent identity across all touchpoints</span>
                                 </div>
                                 <div class="expertise__list__item">
                                     <span class="expertise__list__item-number">04</span>
+                                    <img src="assets/img/icons/registration__icon.svg" alt="icon" class="expertise__list__item-icon">
                                     <span class="expertise__list__item-text">Strategic support, from naming to trademark registration</span>
                                 </div>
                                 <div class="expertise__list__item">
                                     <span class="expertise__list__item-number">05</span>
+                                    <img src="assets/img/icons/websites__icon.svg" alt="icon" class="expertise__list__item-icon">
                                     <span class="expertise__list__item-text">Conversion-oriented websites built with marketing in mind</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-            </div>
+            
+            </div> 
+             
             <div class="separator__image-wrapper">
-                <img src="assets/img/separator.png" alt="">
+                <img class="separator__image" src="assets/img/separator.png" alt="">
             </div>
             <div class="container">
                 <section class="studies">
@@ -274,7 +304,14 @@
                                 <div class="cases__item__content__footer">
                                     <div class="item__content__footer__left">
                                         <a href="#" class="item__content__footer-link">
-                                            <img src="assets/img/case__arrow.svg" alt="arrow">
+                                            <picture>
+                                            <source 
+                                                media="(max-width: 1000px)" 
+                                                srcset="assets/img/orange__arrow__small.png">
+                                            <img 
+                                                src="assets/img/case__arrow.svg" 
+                                                alt="arrow">
+                                            </picture>
                                            <span>View Project</span>
                                         </a>
                                         <div class="item__content__footer__info">
@@ -330,7 +367,14 @@
                                 <div class="cases__item__content__footer">
                                     <div class="item__content__footer__left">
                                         <a href="#" class="item__content__footer-link">
-                                            <img src="assets/img/case__arrow.svg" alt="arrow">
+                                            <picture>
+                                            <source 
+                                                media="(max-width: 1000px)" 
+                                                srcset="assets/img/orange__arrow__small.png">
+                                            <img 
+                                                src="assets/img/case__arrow.svg" 
+                                                alt="arrow">
+                                            </picture>
                                            <span>View Project</span>
                                         </a>
                                         <div class="item__content__footer__info">
@@ -387,7 +431,14 @@
                                 <div class="cases__item__content__footer">
                                     <div class="item__content__footer__left">
                                         <a href="#" class="item__content__footer-link">
-                                            <img src="assets/img/case__arrow.svg" alt="arrow">
+                                            <picture>
+                                            <source 
+                                                media="(max-width: 1000px)" 
+                                                srcset="assets/img/orange__arrow__small.png">
+                                            <img 
+                                                src="assets/img/case__arrow.svg" 
+                                                alt="arrow">
+                                            </picture>
                                            <span>View Project</span>
                                         </a>
                                         <div class="item__content__footer__info">
@@ -443,7 +494,14 @@
                                 <div class="cases__item__content__footer">
                                     <div class="item__content__footer__left">
                                         <a href="#" class="item__content__footer-link">
-                                            <img src="assets/img/case__arrow.svg" alt="arrow">
+                                            <picture>
+                                            <source 
+                                                media="(max-width: 1000px)" 
+                                                srcset="assets/img/orange__arrow__small.png">
+                                            <img 
+                                                src="assets/img/case__arrow.svg" 
+                                                alt="arrow">
+                                            </picture>
                                            <span>View Project</span>
                                         </a>
                                         <div class="item__content__footer__info">
@@ -483,6 +541,7 @@
                         </div>
                     </div>
                 </section>
+                
                 <section class="founder">
                     <div class="founder__left">
                         <img src="assets/img/founder.png" alt="founder">
@@ -505,6 +564,7 @@
                                 or design a high-performing website — we're here to help.
                             </p>
                         </div>   
+                        <a href="#" class="founder-button--mobile">Let's Talk</a>
                         <div class="founder__right__quote">
                             <img class="quote__img" src="assets/img/quote.svg" alt="quote"><p>
                                 We don’t just create beautiful things — we design clarity. 
@@ -521,6 +581,7 @@
                         </div>                     
                     </div>
                 </section>
+               
                 <section class="approach">
                     <div class="approach__left">
                         <h2>Client-focused approach</h2>
@@ -539,24 +600,32 @@
                             <div class="approach__list">
                                 <div class="approach__list__item">
                                     <span class="approach__list__item-number">01</span>
+                                    <img src="assets/img/icons/brands__icon.png" alt="icon" class="approach__list__item-icon">
                                     <span class="approach__list__item-text">Founders launching new brands</span>
                                 </div>
                                 <div class="approach__list__item">
                                     <span class="approach__list__item-number">02</span>
+                                    <img src="assets/img/icons/companies__icon.png" alt="icon" class="approach__list__item-icon">
                                     <span class="approach__list__item-text">Companies going through repositioning</span>
                                 </div>
                                 <div class="approach__list__item">
                                     <span class="approach__list__item-number">03</span>
+                                    <img src="assets/img/icons/support__icon.png" alt="icon" class="approach__list__item-icon">
                                     <span class="approach__list__item-text">In-house teams that need expert support</span>
                                 </div>
                                 <div class="approach__list__item">
                                     <span class="approach__list__item-number">04</span>
+                                    <img src="assets/img/icons/strategy__icon.png" alt="icon" class="approach__list__item-icon">
                                     <span class="approach__list__item-text">Agencies outsourcing branding and strategy</span>
                                 </div>
-                          </div>      
+                          </div>     
+                          <a href="#" class="approach-button approach-button--mobile">
+                            Let’s build something together
+                        </a> 
                     </div>
-                </section>
+                </section> 
             </div>    
+            
                 <section class="reviews">
                     <div class="reviews__flamp">
                         <div class="flamp__header">
@@ -663,11 +732,15 @@
                             </div>
                     </div>
                 </section>
-                <section class="lets__walk">
+                
+                <div class="lets__walk">
                     <img class="lets__walk__background" src="assets/img/lets__talk__background.png" alt="">
                     <img class="lets__walk__img" src="assets/img/lets__talk.png" alt="">
-                </section>
+                </div>
+           
         </main>
+        
+        
         <footer class="footer">
             <div class="container">
                 <div class="footer__content">
@@ -809,21 +882,26 @@
                                     </a> 
                                 </li> 
                             </ul>
+                             
                             <ul class="footer__content__rights">
                                 <li class="footer__content__rights-item">©2018. All rights reserved.</li>
                                 <li class="footer__content__rights-item">
                                     <a href="#" class="footer__content__rights-link">Terms & conditions</a>
                                 </li>
                                 <li class="footer__content__rights-item">
-                                    <a href="#" class="footer__content__rights-link">Terms & conditions</a>
+                                    <a href="#" class="footer__content__rights-link">Privacy policy</a>
                                 </li>
                             </ul>
                         </div>
                 </div>
+          <!--     
                 <div class="footer__logo">
                     <img class="footer__logo__img" src="assets/img/kilev_lab.png" alt="">
                 </div>
             </div>
         </footer>
+    -->
+    </div>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
