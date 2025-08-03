@@ -1210,7 +1210,7 @@ h1, h2 {
   }
 }
 
-@media (max-width: 1620px) {
+@media (max-width: 1700px) {
 
   .hero__watch {
     width: clamp(1000px, 120vw, 1620px);
@@ -1780,7 +1780,7 @@ h1, h2 {
   .header{
     justify-content: center;
   }
-  
+
   .header__menu-list {
     flex-direction: column;
     font-size: 30px;
