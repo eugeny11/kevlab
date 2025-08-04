@@ -1794,8 +1794,7 @@ p.founder__content-p--secondary:last-child{
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
-    padding-right: 10px;
-    max-width: 250px; 
+    padding-right: 13px;
     align-items: center; 
     gap: 8px; 
   }
