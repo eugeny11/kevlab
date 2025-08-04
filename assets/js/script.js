@@ -1,21 +1,50 @@
-/* (function(){
-    const img = document.querySelector('.hero__background__image');
-    // Дефолтная и крайние ширины (в px)
-    const MIN_W = 440;
-    const MAX_W = 1920;
-    // Насколько процентов в сумме хотим сместить от центра
-    const MAX_SHIFT = 30; 
-    
-    function updateHeroPos(){
-      const w = window.innerWidth;
-      // t = 0 при >=MAX_W, t = 1 при <=MIN_W
-      let t = (MAX_W - w) / (MAX_W - MIN_W);
-      t = Math.max(0, Math.min(1, t));
-      // итоговая позиция: 50% + t * MAX_SHIFT
-      const pos = 50 + t * MAX_SHIFT;
-      img.style.setProperty('--hero-pos', pos + '%');
-    }
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.querySelector(".testimonials__slider__track");
+  const slides = Array.from(track.children);
 
-    window.addEventListener('resize', updateHeroPos);
-    updateHeroPos();
-  })(); */
+  slides.forEach((slide) => {
+    const clone = slide.cloneNode(true);
+    track.appendChild(clone);
+  });
+
+   if (window.innerWidth >= 1450 && window.innerWidth <= 1920) {
+    const items = document.querySelectorAll('.services__list__item');
+
+    items.forEach(item => {
+      const arrowBlock = item.querySelector('.services__list-arrow-block');
+      const textFlex = item.querySelector('.list__text-flex');
+
+      arrowBlock.addEventListener('mouseenter', () => {
+        textFlex.classList.add('show-image');
+      });
+
+      arrowBlock.addEventListener('mouseleave', () => {
+        textFlex.classList.remove('show-image');
+      });
+    });
+  }
+
+   const toggle = document.querySelector('.header__menu-toggle');
+  const menuList = document.querySelector('.header__menu-list');
+
+  toggle.addEventListener('click', () => {
+    menuList.classList.toggle('active');
+  });
+
+  const footerLogo = document.querySelector('.footer__logo__img');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        footerLogo.classList.add('animate-in');
+      } else {
+        footerLogo.classList.remove('animate-in');
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  observer.observe(footerLogo);
+  
+});
