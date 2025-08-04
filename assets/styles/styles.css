@@ -378,7 +378,7 @@ h1, h2 {
   flex-direction: column;
   padding-bottom: 18px;
   width: 100%;
-  border-bottom: 0.5px solid #989797;
+  border-bottom: 0.5px solid #989797; 
 }
 
 .services__list__item:last-child{
@@ -402,7 +402,7 @@ h1, h2 {
   font-family: 'Schabo Condensed', sans-serif;
   font-size: 72px;
   text-transform: uppercase;
-  color: #161616;
+  color: #404040;
 }
 
 .services__list-arrow-block{
@@ -641,6 +641,8 @@ h1, h2 {
 .content__header__title{
   display: flex;
   gap: 9px;
+  max-width: 190px;
+  width: 100%;
 }
 
 .content__header__title span{
@@ -652,6 +654,7 @@ h1, h2 {
 
 .content__header-number{
   font-size: 16px;
+  color: #000;
 }
 
 .cases__item__content__info{
@@ -732,7 +735,7 @@ h1, h2 {
   width: 100%;
   max-height: 877px;
   height: 100%;
-  border-radius: 16px;
+  border-radius: 32px;
   overflow: hidden;
   z-index: 1;
 }
@@ -1410,6 +1413,7 @@ h1, h2 {
   .services{
     width: 100%;
     padding: 0;
+    margin-top: 138px;
   }
 
   .portrait__image-wrapper{
@@ -1425,27 +1429,20 @@ h1, h2 {
   
   .services__main {
     margin-top: 10px;
-    align-items: flex-start;
   }
 
-  .services__intro  {
-    align-items: flex-start;
-  }
 
   .services__info{
     font-size: 24px;
   }
 
-  .services__left {
-    align-items: flex-start;
-  }
 
   .list__text-flex span{
     font-size: 48px;
   }
 
   .intro__title {
-    text-align: left;
+    text-align: center;
   }
 
   .services__list-arrow-block:hover .list__text-flex span{
@@ -1463,10 +1460,6 @@ h1, h2 {
     align-items: flex-start;
   }
 
-  .expertise__intro{
-    align-items: flex-start;
-  }
-
   .expertise__left {
     align-items: flex-start;
     margin-top: 60px;
@@ -1476,12 +1469,21 @@ h1, h2 {
     font-size: 24px;
   }
 
+  .expertise__text{
+    font-size: 24px;
+    letter-spacing: -1.68px;
+  }
+
   .expertise__image-wrapper{
     margin-top: 60px;
   }
 
   .services__left {
     display: none;
+  }
+
+  .services__right{
+    margin-top: 20px;
   }
 
   .services__list {
@@ -1576,26 +1578,41 @@ h1, h2 {
   }
 
   .founder__right__quote{
-    max-width: 681px;
+    max-width: 392px;
     width: 100%;
-    aspect-ratio: 681 / 282;   
-    overflow: visible; 
-    display: none;
+    max-height: 231px;
+    height: 100%;   
+    padding-top: 22px;
+    padding-bottom: 29px;
+    padding-left: 20px;
+    padding-right: 15px;
+    background-image: url(../img/founder__quote__mobile.png);
+    background-position: center center;
   }
 
   .founder__right__quote p{
-    font-size: 34px;
-    
+    font-size: 25px;
+    letter-spacing: -1.44px;
+    max-width: 347px;
+  }
+
+  .quote__img {
+    margin-right: 22px;
   }
 
   .quote__author {
     padding-right: 5px;
-    padding-bottom: 20px;
-    width: 175px;
+    padding-bottom: 5px;
+    
   }
 
   .quote__author-position{
     display: none;
+  }
+
+  .quote__author-title{
+    font-size: 16px;
+    letter-spacing: -0.64px;
   }
 
   .approach{
@@ -1666,6 +1683,30 @@ h1, h2 {
 
   .footer__content__list:nth-child(3) {
     margin-right: 146px;
+}
+
+.services__intro{
+  align-items: flex-start;
+}
+
+.intro__title{
+  text-align: left;
+}
+
+.intro__label {
+  padding-top: 0;
+}
+
+.expertise__intro{
+  align-items: flex-start;
+}
+
+p.founder__content-p--secondary {
+  margin-top: 20px;
+}
+
+p.founder__content-p--secondary:last-child{
+  margin-top: 0;
 }
 
 }
@@ -1770,7 +1811,13 @@ h1, h2 {
 .lets__walk__img {
   max-width: 396px;
   width: 100%;
+  top: 48%;
   left: 5%;
+}
+
+.cases__item__img-wrapper{
+  height: 300px;
+  max-width: 390px;
 }
 
 }
@@ -1785,6 +1832,10 @@ h1, h2 {
     flex-direction: column;
     font-size: 30px;
   }
+
+  .main {
+    margin-top: 134px;
+}
 }
 
 @media (max-width: 420px){
@@ -1797,11 +1848,21 @@ h1, h2 {
         padding: 100px 0px;
     }
 
+    .founder__right__quote{
+      max-width: 348px;
+    }
+
+    .quote__author-title{
+      font-size: 13px;
+    }
+
+    .founder__right__quote p{
+      font-size: 20px;
+    }
+
 }
 
 @media (max-width: 400px) {
-
-  
 
   .footer__content__rights-item {
         font-size: 20px;
@@ -1820,4 +1881,20 @@ h1, h2 {
     justify-content: center;
  }   
 
+}
+
+@media (max-width: 350px){
+      .founder__right__quote p {
+        font-size: 18px;
+      }
+}
+
+@media (max-width: 320px){
+      .founder__right__quote p {
+        font-size: 17px;
+      }
+
+      .quote__author{
+        display: none;
+      }
 }
