@@ -1788,6 +1788,13 @@ p.founder__content-p--secondary:last-child{
     padding: 15px 13px;
   }
 
+  @supports (-webkit-touch-callout: none) {
+  .hero-button--mobile {
+    background-size: 100% 100%;
+  }
+}
+
+
   .footer__content__list:nth-child(2), .footer__content__list:last-child{
     margin-right: 0;
   }
