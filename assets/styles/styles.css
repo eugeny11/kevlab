@@ -1563,6 +1563,10 @@ h1, h2 {
     display: none;
   }
 
+  .founder__right__content{
+    max-width: 600px;
+  }
+
   .founder-button--mobile{
     margin-top: 29px;
     max-width: 144px;
@@ -1707,6 +1711,10 @@ p.founder__content-p--secondary {
 
 p.founder__content-p--secondary:last-child{
   margin-top: 0;
+}
+
+.footer__content {
+      padding: 100px 0px;
 }
 
 }
@@ -1867,6 +1875,14 @@ p.founder__content-p--secondary:last-child{
   .footer__content__rights-item {
         font-size: 20px;
     }
+
+    .footer__content__list:nth-child(3) {
+        margin-right: 125px;
+    }
+
+  .footer__content__list-link {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 380px){
@@ -1880,6 +1896,10 @@ p.founder__content-p--secondary:last-child{
     align-items: center;
     justify-content: center;
  }   
+
+ .footer__content__list-link {
+        font-size: 13px;
+    }
 
 }
 
