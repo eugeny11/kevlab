@@ -15,25 +15,44 @@ document.addEventListener("DOMContentLoaded", function () {
   track.scrollLeft = 0;
   const slides = Array.from(track.children);
   const slideWidth = slides[0].offsetWidth; 
-  let startX = 0;
-  let currentX = 0;
-  let isDragging = false;
+
+let startX = 0;
+let startY = 0;
+let currentX = 0;
+let currentY = 0;
+let deltaX = 0;
+let deltaY = 0;
+let isDragging = false;
 
   track.style.transform = `translateX(0px)`;
 
   track.addEventListener('touchstart', (e) => {
     isDragging = true;
     startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
     track.style.transition = 'none';
   });
 
   track.addEventListener('touchmove', (e) => {
-  
-    if (!isDragging) return;
-    currentX = e.touches[0].clientX;
-    const delta = currentX - startX;
-    track.style.transform = `translateX(${delta}px)`;
-  });
+  if (!isDragging) return;
+
+  currentX = e.touches[0].clientX;
+  currentY = e.touches[0].clientY;
+
+  deltaX = currentX - startX;
+  deltaY = currentY - startY;
+
+  // Если вертикальное движение преобладает — не обрабатываем свайп
+  if (Math.abs(deltaY) > Math.abs(deltaX)) {
+    isDragging = false;
+    return; // даём странице скроллиться
+  }
+
+  // Блокируем скролл только при горизонтальном свайпе
+  e.preventDefault();
+
+  track.style.transform = `translateX(${deltaX}px)`;
+}, { passive: false });
 
   track.addEventListener('touchend', () => {
   if (!isDragging) return;
