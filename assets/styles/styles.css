@@ -195,7 +195,6 @@ h1, h2 {
 
 .hero__watch {
   position: absolute;
-  /* подгоняем позицию, чтобы «часы» легли точно на фон */
   top: 50%;
   left: 50%;
   width: 1860px;
@@ -1047,6 +1046,8 @@ h1, h2 {
   overflow: hidden;  
 }
 
+
+
 .testimonials__slider__track {
   display: flex;
   align-items: flex-start;
@@ -1265,14 +1266,12 @@ h1, h2 {
 }
 
 @media (max-width: 1650px) {
-  
 
   @media (max-width: 1550px){
   .footer__content__main {
     gap: 100px;
   }
 }
-
     
 }
 
@@ -1916,6 +1915,20 @@ p.founder__content-p--secondary:last-child{
 }
 
 @media (max-width: 450px){
+
+  .header{
+    justify-content: center;
+  }
+
+  .header__menu-list {
+    flex-direction: column;
+    font-size: 30px;
+  }
+
+  .main {
+    margin-top: 134px;
+}
+
    .hero__bg{ 
     background: url('../img/hero__background__mobile.png') no-repeat;
     background-size: cover;
@@ -1942,23 +1955,18 @@ p.founder__content-p--secondary:last-child{
   max-width: 390px;
 }
 
-}
-
-@media (max-width: 450px){
-
-  .header{
-    justify-content: center;
+.testimonials__slider__track {
+    animation: none !important;
+    transition: transform 0.3s ease;
   }
 
-  .header__menu-list {
-    flex-direction: column;
-    font-size: 30px;
-  }
+  .testimonials__slider__track > * {
+  flex: 0 0 100%; /* по одному слайду */
+  scroll-snap-align: start;
+}
 
-  .main {
-    margin-top: 134px;
 }
-}
+
 
 @media (max-width: 420px){
 
