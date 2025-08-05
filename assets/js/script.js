@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
   track.scrollLeft = 0;
   const slides = Array.from(track.children);
-  const slideWidth = slides[0].offsetWidth + 24; // 24 — твой margin-right
-
+  const slideWidth = slides[0].offsetWidth; 
   let startX = 0;
   let currentX = 0;
   let isDragging = false;
@@ -23,20 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
   track.style.transform = `translateX(0px)`;
 
   track.addEventListener('touchstart', (e) => {
-    document.body.classList.add("no-scroll");
     isDragging = true;
     startX = e.touches[0].clientX;
     track.style.transition = 'none';
   });
 
   track.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    document.body.classList.remove("no-scroll");
+  
     if (!isDragging) return;
     currentX = e.touches[0].clientX;
     const delta = currentX - startX;
     track.style.transform = `translateX(${delta}px)`;
-  },{ passive: false });
+  });
 
   track.addEventListener('touchend', () => {
   if (!isDragging) return;
