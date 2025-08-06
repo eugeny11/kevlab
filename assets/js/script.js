@@ -197,7 +197,7 @@ function initSectionAnimation(sectionSelector, itemSelector) {
       }
     });
   }, {
-    threshold: 0.3
+    threshold: 0.2
   });
 
   observer.observe(section);
@@ -210,6 +210,15 @@ function initSectionAnimation(sectionSelector, itemSelector) {
  initSectionAnimation('.cases', '[data-animate]');
  initSectionAnimation('.founder', '[data-animate]');
  initSectionAnimation('.approach', '[data-animate]');
+
+ const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    document.querySelectorAll('.studies [data-animate], .cases [data-animate]').forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, i * 120);
+    });
+  }
 
 
    const toggle = document.querySelector('.header__menu-toggle');
