@@ -104,14 +104,32 @@ body {
   margin: 0;
 }
 
-
-
 h1, h2 {
     font-family: 'Schabo Condensed', sans-serif;
     text-transform: uppercase;
     font-weight: 400;
     font-size: 72px;
     color: #161616;
+}
+
+[data-animate].fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+[data-animate].fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate].fade-in {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+[data-animate].fade-in.visible {
+  opacity: 1;
 }
 
 .wrapper {
@@ -388,6 +406,7 @@ h1, h2 {
 }
 
 .services__list__item{
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   padding-bottom: 18px;
@@ -443,12 +462,13 @@ h1, h2 {
   display: flex;
   justify-content: center;
   padding: 18px 19px;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   cursor: pointer;
 }
 
 .services__list-arrow-block:hover{
   background-color: #EB4E12;
+   transform: scale(1.1);
 }
 
 .portrait__image-wrapper{

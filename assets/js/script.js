@@ -165,18 +165,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const items = document.querySelectorAll('.services__list__item');
 
     items.forEach(item => {
-      const arrowBlock = item.querySelector('.services__list-arrow-block');
+     
       const textFlex = item.querySelector('.list__text-flex');
 
-      arrowBlock.addEventListener('mouseenter', () => {
+      item.addEventListener('mouseenter', () => {
         textFlex.classList.add('show-image');
       });
 
-      arrowBlock.addEventListener('mouseleave', () => {
+      item.addEventListener('mouseleave', () => {
         textFlex.classList.remove('show-image');
       });
     });
   }
+
+function initSectionAnimation(sectionSelector, itemSelector) {
+  if (window.innerWidth < 1450 || window.innerWidth > 1920) return;
+
+  const section = document.querySelector(sectionSelector);
+  const animatedItems = document.querySelectorAll(`${sectionSelector} ${itemSelector}`);
+  let hasAnimated = false;
+
+  if (!section || animatedItems.length === 0) return;
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAnimated) {
+        animatedItems.forEach((el, i) => {
+          setTimeout(() => {
+            el.classList.add('visible');
+          }, i * 120);
+        });
+        hasAnimated = true;
+        observer.disconnect();
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  observer.observe(section);
+}
+
+ initSectionAnimation('.services', '[data-animate]');
+ initSectionAnimation('.hero__content', '[data-animate]');
+ initSectionAnimation('.expertise', '[data-animate]');
+ initSectionAnimation('.studies', '[data-animate]');
+ initSectionAnimation('.founder', '[data-animate]');
+ initSectionAnimation('.approach', '[data-animate]');
+
 
    const toggle = document.querySelector('.header__menu-toggle');
   const menuList = document.querySelector('.header__menu-list');
