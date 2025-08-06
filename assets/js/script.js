@@ -18,13 +18,13 @@ function initDesktopSlider() {
   const slides = Array.from(track.children);
   slideWidth = slides[0].offsetWidth + slideGap;
 
-  // Клонируем для бесконечности
+  
   slides.forEach((slide) => {
     const clone = slide.cloneNode(true);
     track.appendChild(clone);
   });
 
-  // Автоматическая пошаговая прокрутка
+  
   intervalId = setInterval(() => {
     track.style.transition = 'transform 0.5s ease';
     track.style.transform = `translateX(-${slideWidth}px)`;
@@ -35,7 +35,7 @@ function initDesktopSlider() {
       track.style.transform = 'translateX(0)';
       track.removeEventListener('transitionend', onTransition);
     });
-  }, 3000); // каждые 3 секунды
+  }, 3000); 
 }
 
 
@@ -118,7 +118,6 @@ function initMobileSwipe() {
         });
       }
     } else {
-      // короткий свайп — возврат
       track.style.transition = 'transform 0.3s ease';
       track.style.transform = `translateX(0px)`;
     }
@@ -154,8 +153,10 @@ function checkScreenMode() {
 
 checkScreenMode();
 
-window.addEventListener('resize', () => {
-  checkScreenMode();
+document.addEventListener('DOMContentLoaded', () => {
+  requestAnimationFrame(() => {
+    checkScreenMode();
+  });
 });
 
   
