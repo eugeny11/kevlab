@@ -210,6 +210,7 @@ function initSectionAnimation(sectionSelector, itemSelector) {
  initSectionAnimation('.cases', '[data-animate]');
  initSectionAnimation('.founder', '[data-animate]');
  initSectionAnimation('.approach', '[data-animate]');
+ initSectionAnimation('.lets__walk', '[data-animate]');
 
  const isMobile = window.innerWidth <= 768;
   if (isMobile) {

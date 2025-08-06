@@ -588,6 +588,11 @@ h1, h2 {
   border-bottom: none;
 }
 
+.expertise__list__item-text:hover{
+  color: #eb4e12;
+  cursor: pointer;
+}
+
 .separator__image-wrapper{
   width: 100%;
   height: 455px;
@@ -989,6 +994,11 @@ h1, h2 {
 
 .approach__list__item-icon{
   display: none;
+}
+
+.approach__list__item-text:hover{
+  color: #eb4e12;
+  cursor: pointer;
 }
 
 .reviews{
