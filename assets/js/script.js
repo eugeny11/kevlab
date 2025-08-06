@@ -207,6 +207,7 @@ function initSectionAnimation(sectionSelector, itemSelector) {
  initSectionAnimation('.hero__content', '[data-animate]');
  initSectionAnimation('.expertise', '[data-animate]');
  initSectionAnimation('.studies', '[data-animate]');
+ initSectionAnimation('.cases', '[data-animate]');
  initSectionAnimation('.founder', '[data-animate]');
  initSectionAnimation('.approach', '[data-animate]');
 
