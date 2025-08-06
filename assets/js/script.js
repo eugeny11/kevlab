@@ -1,28 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const track = document.querySelector(".testimonials__slider__track");
-  
-  if (window.innerWidth >= 450 && window.innerWidth <= 1920) {
-    const slides = Array.from(track.children);
-    slides.forEach((slide) => {
-      const clone = slide.cloneNode(true);
-      track.appendChild(clone);
-    });
-  }
+let track = document.querySelector('.testimonials__slider__track');
+const slideGap = 24;
+let slideWidth;
 
-  if  (window.innerWidth < 450){
-  console.log("Мобильный свайп активирован");
-  
-  track.scrollLeft = 0;
+let isDesktopActive = false;
+let isMobileActive = false;
+let intervalId;
+
+function initDesktopSlider() {
+  if (isDesktopActive) return;
+  isDesktopActive = true;
+  isMobileActive = false;
+
+  clearMobileSwipe(); 
+  console.log("Автопрокрутка активирована");
+
   const slides = Array.from(track.children);
-  const slideWidth = slides[0].offsetWidth; 
+  slideWidth = slides[0].offsetWidth + slideGap;
 
-let startX = 0;
-let startY = 0;
-let currentX = 0;
-let currentY = 0;
-let deltaX = 0;
-let deltaY = 0;
-let isDragging = false;
+  // Клонируем для бесконечности
+  slides.forEach((slide) => {
+    const clone = slide.cloneNode(true);
+    track.appendChild(clone);
+  });
+
+  // Автоматическая пошаговая прокрутка
+  intervalId = setInterval(() => {
+    track.style.transition = 'transform 0.5s ease';
+    track.style.transform = `translateX(-${slideWidth}px)`;
+
+    track.addEventListener('transitionend', function onTransition() {
+      track.appendChild(track.children[0]);
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(0)';
+      track.removeEventListener('transitionend', onTransition);
+    });
+  }, 3000); // каждые 3 секунды
+}
+
+
+function initMobileSwipe() {
+  if (isMobileActive) return;
+  isMobileActive = true;
+  isDesktopActive = false;
+
+  console.log("Мобильный свайп активирован");
+
+  clearAutoscroll();
+
+  const slides = Array.from(track.children);
+  slideWidth = slides[0].offsetWidth;
+
+  let startX = 0;
+  let startY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let deltaX = 0;
+  let deltaY = 0;
+  let isDragging = false;
 
   track.style.transform = `translateX(0px)`;
 
@@ -34,65 +69,95 @@ let isDragging = false;
   });
 
   track.addEventListener('touchmove', (e) => {
-  if (!isDragging) return;
+    if (!isDragging) return;
 
-  currentX = e.touches[0].clientX;
-  currentY = e.touches[0].clientY;
+    currentX = e.touches[0].clientX;
+    currentY = e.touches[0].clientY;
 
-  deltaX = currentX - startX;
-  deltaY = currentY - startY;
+    deltaX = currentX - startX;
+    deltaY = currentY - startY;
 
-  // Если вертикальное движение преобладает — не обрабатываем свайп
-  if (Math.abs(deltaY) > Math.abs(deltaX)) {
-    isDragging = false;
-    return; // даём странице скроллиться
-  }
+    if (Math.abs(deltaY) > Math.abs(deltaX)) {
+      isDragging = false;
+      return;
+    }
 
-  // Блокируем скролл только при горизонтальном свайпе
-  e.preventDefault();
-
-  track.style.transform = `translateX(${deltaX}px)`;
-}, { passive: false });
+    e.preventDefault();
+    track.style.transform = `translateX(${deltaX}px)`;
+  }, { passive: false });
 
   track.addEventListener('touchend', () => {
-  if (!isDragging) return;
-  isDragging = false;
-  const delta = currentX - startX;
+    if (!isDragging) return;
+    isDragging = false;
+    const delta = currentX - startX;
 
-  if (Math.abs(delta) > slideWidth / 4) {
-    if (delta < 0) {
-      // ➡️ Свайп влево
-      track.style.transition = 'transform 0.3s ease';
-      track.style.transform = `translateX(-${slideWidth}px)`;
+    if (Math.abs(delta) > slideWidth / 4) {
+      if (delta < 0) {
+        // Свайп влево
+        track.style.transition = 'transform 0.3s ease';
+        track.style.transform = `translateX(-${slideWidth}px)`;
 
-      track.addEventListener('transitionend', function moveLeft() {
-        track.appendChild(track.children[0]);
-        track.style.transition = 'none';
-        track.style.transform = `translateX(0px)`;
-        track.removeEventListener('transitionend', moveLeft);
-      });
-
-    } else {
-      // ⬅️ Свайп вправо (исправлено)
-      track.style.transition = 'none';
-      track.insertBefore(track.lastElementChild, track.firstElementChild);
-      track.style.transform = `translateX(-${slideWidth}px)`;
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          track.style.transition = 'transform 0.3s ease';
+        track.addEventListener('transitionend', function moveLeft() {
+          track.appendChild(track.children[0]);
+          track.style.transition = 'none';
           track.style.transform = `translateX(0px)`;
+          track.removeEventListener('transitionend', moveLeft);
         });
-      });
+
+      } else {
+        // Свайп вправо
+        track.style.transition = 'none';
+        track.insertBefore(track.lastElementChild, track.firstElementChild);
+        track.style.transform = `translateX(-${slideWidth}px)`;
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            track.style.transition = 'transform 0.3s ease';
+            track.style.transform = `translateX(0px)`;
+          });
+        });
+      }
+    } else {
+      // короткий свайп — возврат
+      track.style.transition = 'transform 0.3s ease';
+      track.style.transform = `translateX(0px)`;
     }
-  } else {
-    // короткий свайп — возврат
-    track.style.transition = 'transform 0.3s ease';
-    track.style.transform = `translateX(0px)`;
+  });
+}
+
+function clearAutoscroll() {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
   }
+  track.style.transition = 'none';
+  track.style.transform = 'translateX(0)';
+}
+
+function clearMobileSwipe() {
+  track.replaceWith(track.cloneNode(true)); 
+  const newTrack = document.querySelector('.testimonials__slider__track');
+  track = newTrack;
+  track.parentNode.replaceChild(newTrack, track);
+  
+}
+
+function checkScreenMode() {
+  const width = window.innerWidth;
+
+  if (width >= 450 && width <= 1920) {
+    initDesktopSlider();
+  } else if (width < 450) {
+    initMobileSwipe();
+  }
+}
+
+checkScreenMode();
+
+window.addEventListener('resize', () => {
+  checkScreenMode();
 });
 
-}
   
 
    if (window.innerWidth >= 1450 && window.innerWidth <= 1920) {

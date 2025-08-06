@@ -1053,17 +1053,7 @@ h1, h2 {
 .testimonials__slider__track {
   display: flex;
   align-items: flex-start;
- animation: scrollSlider 40s linear infinite;
  gap: 24px;
-}
-
-@keyframes scrollSlider {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }
 
 .testimonials__slide{
@@ -1965,7 +1955,7 @@ p.founder__content-p--secondary:last-child{
   }
 
   .testimonials__slider__track > * {
-  flex: 0 0 100%; /* по одному слайду */
+  flex: 0 0 100%; 
   scroll-snap-align: start;
 }
 
