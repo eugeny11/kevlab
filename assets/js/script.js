@@ -159,8 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-  
-
    if (window.innerWidth >= 1450 && window.innerWidth <= 1920) {
     const items = document.querySelectorAll('.services__list__item');
 
