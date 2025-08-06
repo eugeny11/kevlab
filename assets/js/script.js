@@ -177,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 function initSectionAnimation(sectionSelector, itemSelector) {
-  if (window.innerWidth < 1450 || window.innerWidth > 1920) return;
 
   const section = document.querySelector(sectionSelector);
   const animatedItems = document.querySelectorAll(`${sectionSelector} ${itemSelector}`);
