@@ -1277,9 +1277,7 @@ h1, h2 {
 @media (max-width: 1700px) {
 
   .hero__watch {
-    width: clamp(1000px, 120vw, 1620px);
-    bottom: 0;
-    transform: translateX(-50%) translateY(0);
+    width: clamp(1000px, 100vw, 1620px);
   }
 
   .services__main {
@@ -1521,6 +1519,10 @@ h1, h2 {
 }
 
 @media (max-width: 1000px){
+
+  .hero__watch {
+    top: 65%;
+  }
 
   .services{
     width: 100%;
