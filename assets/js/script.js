@@ -212,7 +212,7 @@ function initSectionAnimation(sectionSelector, itemSelector) {
  initSectionAnimation('.approach', '[data-animate]');
  initSectionAnimation('.lets__walk', '[data-animate]');
 
- const isMobile = window.innerWidth <= 768;
+ const isMobile = window.innerWidth <= 1050;
   if (isMobile) {
     document.querySelectorAll('.studies [data-animate], .cases [data-animate]').forEach((el, i) => {
       setTimeout(() => {
