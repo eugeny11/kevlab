@@ -1278,6 +1278,7 @@ h1, h2 {
 
   .hero__watch {
     width: clamp(1000px, 100vw, 1620px);
+    top: 65%;
   }
 
   .services__main {
@@ -1491,6 +1492,13 @@ h1, h2 {
 
 }
 
+@media (max-width: 1250px){
+   .hero__watch {
+    width: clamp(1000px, 120vw, 1620px);
+    top: 75%;
+  }
+}
+
 @media (max-width: 1070px){
 
   .footer__content__credits {
@@ -1519,10 +1527,6 @@ h1, h2 {
 }
 
 @media (max-width: 1000px){
-
-  .hero__watch {
-    top: 65%;
-  }
 
   .services{
     width: 100%;
