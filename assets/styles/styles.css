@@ -1278,7 +1278,7 @@ h1, h2 {
 
   .hero__watch {
     width: clamp(1000px, 120vw, 1620px);
-    top: auto;
+    top: unset;
     bottom: 0;
     transform: translateX(-50%) translateY(0);
   }
