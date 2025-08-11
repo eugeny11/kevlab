@@ -144,11 +144,11 @@ function clearMobileSwipe() {
 function checkScreenMode() {
   const width = window.innerWidth;
 
-  if (width >= 450 && width <= 1920) {
+  if (width > 450 && width <= 1920) {
     initDesktopSlider();
-  } else if (width < 450) {
+} else if (width <= 450) {
     initMobileSwipe();
-  }
+}
 }
 
 checkScreenMode();
