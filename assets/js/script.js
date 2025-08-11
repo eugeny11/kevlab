@@ -142,13 +142,13 @@ function clearMobileSwipe() {
 }
 
 function checkScreenMode() {
-  const width = window.innerWidth;
-
-  if (width > 450 && width <= 1920) {
-    initDesktopSlider();
-} else if (width <= 450) {
+  if (window.matchMedia('(max-width: 450px)').matches) {
+    // мобильный режим
     initMobileSwipe();
-}
+  } else if (window.matchMedia('(min-width: 451px) and (max-width: 1920px)').matches) {
+    // десктопный режим
+    initDesktopSlider();
+  }
 }
 
 checkScreenMode();
